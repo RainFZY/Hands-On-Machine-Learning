@@ -8,15 +8,11 @@ Identify the authors of the 11 disputed Federalist Papers using naive Bayes clas
 
 ​	1788年，包含85篇文章的著名的《联邦党人文集》集结出版。《联邦党人文集》出版的时候，Hamilton坚持匿名发表，于是，这些文章到底出自谁人之手，成了一桩公案。在之后的1810年和1818年，Hamilton和Madison分别列出了两份作者名单。在85篇文章中，有73篇文章的作者身份较为明确，其余12篇存在争议。而Hamilton和Madison的写作风格又极其接近。实验要求用贝叶斯方法对这12篇disputed的文章进行分类，分成Hamilton和Madison两大类，来推测它们的作者。
 
-
-
 ### **材料：**
 
 ​	《联邦党人文集》的85篇文章。原网址是https://avalon.law.yale.edu/subject_menus/fed.asp
 
 ​	按文章编号顺序存在了The Federalist Papers.txt文件中
-
-
 
 ### **思路：**
 
