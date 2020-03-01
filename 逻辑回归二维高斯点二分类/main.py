@@ -44,6 +44,7 @@ dataSet,labels = loadData() # 特征值矩阵，标签矩阵
 #print(dataSet)
 #print(labels)
 
+
 # 绘制生成的ab点分布图
 x1, y1 = dataSet[0:300].T # 所有A类点
 x2, y2 = dataSet[300:500].T # 所有B类点
@@ -80,9 +81,9 @@ def gradAscent(dataMatIn, classLabels, epoch):
         # 两个矩阵相乘后变成500*1矩阵，每一行的值就是wei[0] + wei[1] * dataSet[i][0] + wei[2] * dataSet[i][1]
         # 即拟合直线，大于0小于0来判断属于A还是属于B，作为横坐标值代入sigmoid函数正好合适
         h = sigmoid(dataMatrix * theta)  # 括号内大于0，h更接近于1，B；括号内小于0，h更接近于0，A。h共500行，每一行代表一个点
-        error = (labelMat - h)  # 计算预测值域实际值的残差，500 x 1
+        error = (labelMat - h)  # 计算预测值域实际值的偏差，500 x 1
         # transpose转置，dataMatrix.transpose()是3 x 500
-        theta = theta + alpha * dataMatrix.transpose() * error # 梯度下降算法（把所有的残差相加），找出最佳的参数，theta是3*1矩阵
+        theta = theta + alpha * dataMatrix.transpose() * error # matrix mult，梯度下降算法，找出最佳的参数，theta是3*1矩阵
 
     # theta就是参数列向量(要求解的),表示回归系数[w0,w1,w2]
     return theta
