@@ -32,18 +32,18 @@ B类点以（1，2）为中心、（1，0；0，2）为协方差矩阵的二维�
 
 AB点分布图（是红色点、是蓝色叉）：
 
-![ab_distribution](https://github.com/RainFZY/Hands-On-Machine-Learning/tree/master/逻辑回归二维高斯点二分类/ab_distribution.jpg)
+![](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/逻辑回归二维高斯点二分类/ab_distribution.jpg)
 
 不同迭代次数epoch下的准确率：
 
-![results](https://github.com/RainFZY/Hands-On-Machine-Learning/tree/master/逻辑回归二维高斯点二分类/results.png)
+![](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/逻辑回归二维高斯点二分类/results.png)
 
 迭代次数epoch与准确率曲线：
 
-![epoch-accuracy-curve](https://github.com/RainFZY/Hands-On-Machine-Learning/tree/master/逻辑回归二维高斯点二分类/epoch-accuracy-curve.jpg)
+![](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/逻辑回归二维高斯点二分类/epoch-accuracy-curve.jpg)
 
 可以看到，在迭代次数很小时，准确率随着迭代次数的增加有明显的提升。而当迭代次数达到30次左右时，准确率达到最高值并基本维持不变。最高准确率是88.2%，达到最高准确率的最小迭代次数是106次。
 
 用最佳且最小迭代次数绘制的最佳拟合决策分界线：
 
-![best-fit-line](https://github.com/RainFZY/Hands-On-Machine-Learning/tree/master/逻辑回归二维高斯点二分类/best-fit-line.jpg)
+![](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/逻辑回归二维高斯点二分类/best-fit-line.jpg)
