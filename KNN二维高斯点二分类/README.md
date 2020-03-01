@@ -42,14 +42,14 @@ B类点以（1，2）为中心、（1，0；0，2）为协方差矩阵的二维�
 
 选取了其中一次的实验结果：
 
-![results](C:\Users\skyfly_fzy\Desktop\Python Studio\Hands-On-Machine-Learning\KNN二维高斯点二分类\results.png)
+![results](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/KNN二维高斯点二分类/results.png)
 
 该次试验中，最佳的k值是26，对应的最高准确率是85.6%。而进行多次测试发现，最佳的k值在20左右到100左右之间不定，k值在这个范围内时准确率都较高，且比较接近。最高的准确率都在85%左右。因此k的最佳取值在20到100之间。
 
 这是根据结果绘制出的k-accuray曲线：
 
-![curves](C:\Users\skyfly_fzy\Desktop\Python Studio\Hands-On-Machine-Learning\KNN二维高斯点二分类\curves.png)
+![curves](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/KNN二维高斯点二分类/curves.png)
 
 这是利用python的plt.pcolormesh函数，经过knn决策划分的AB区域分类图：
 
-![决策分类图](C:\Users\skyfly_fzy\Desktop\Python Studio\Hands-On-Machine-Learning\KNN二维高斯点二分类\决策分类图.jpg)
+![决策分类图](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/KNN二维高斯点二分类/决策分类图.jpg)
