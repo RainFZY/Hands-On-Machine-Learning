@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="KNN高斯分类" />
+    <orderEntry type="module" module-name="逻辑回归高斯分类" />
+    <orderEntry type="module" module-name="SVM高斯点二分类" />
+    <orderEntry type="module" module-name="KNN高斯分类" />
+    <orderEntry type="module" module-name="逻辑回归高斯分类" />
+    <orderEntry type="module" module-name="K-Means 点二分类" />
+    <orderEntry type="module" module-name="K-Means 点二分类" />
+    <orderEntry type="module" module-name="Movie Recommender System" />
+    <orderEntry type="module" module-name="神经网络异或问题" />
+    <orderEntry type="module" module-name="神经网络异或问题" />
+    <orderEntry type="module" module-name="基于LeNet-5的MNIST字符识别" />
+    <orderEntry type="module" module-name="ResNet-18实现CIFAR-10图像分类" />
+    <orderEntry type="module" module-name="Selective Search" />
+    <orderEntry type="module" module-name="语法测试" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="projectConfiguration" value="pytest" />
+    <option name="PROJECT_TEST_RUNNER" value="pytest" />
+  </component>
+</module>
