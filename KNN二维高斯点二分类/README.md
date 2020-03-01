@@ -38,7 +38,7 @@ B类点以（1，2）为中心、（1，0；0，2）为协方差矩阵的二维�
 
 这是生成的所有500个点，红色代表A点，中心为(0,0)，蓝色代表B点，中心为(1,2)：
 
-![[https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/KNN%E4%BA%8C%E7%BB%B4%E9%AB%98%E6%96%AF%E7%82%B9%E4%BA%8C%E5%88%86%E7%B1%BB/ab_distribution.jpg](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/KNN二维高斯点二分类/ab_distribution.jpg)]()
+![image](https://github.com/RainFZY/Hands-On-Machine-Learning/blob/master/KNN二维高斯点二分类/ab_distribution.jpg)
 
 选取了其中一次的实验结果：
 
