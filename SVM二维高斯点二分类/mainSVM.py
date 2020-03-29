@@ -47,14 +47,17 @@ def plotPoints(dataset):
     plt.xlabel("x")
     plt.ylabel("y")
 
-
-parameters = {'C': [0.5, 1, 3, 5, 7, 9]} # C越大越容易过拟合，C跟松弛向量有关
+# 线性核
+# C：错误项的惩罚系数，C越大泛化能力越弱，越容易过拟合，C跟松弛向量有关
+parameters = {'C': [0.5, 1, 3, 5, 7, 9]} #
 clf1 = GridSearchCV(SVC(kernel='linear'), parameters, scoring='f1') # 选择最佳参数
 clf1.fit(trainingSet, trainingLabels)  # 训练
 print('best parameters of linear kernel:',clf1.best_params_)
 clf1 = SVC(kernel='linear', C=clf1.best_params_['C'])
 clf1.fit(trainingSet, trainingLabels)
 
+# 高斯核
+# gamma：核函数系数
 parameters = {'C': [0.5, 1, 3, 5, 7, 9], 'gamma': [0.001, 0.125, 0.25, 0.5, 1, 2, 4]}
 clf2 = GridSearchCV(SVC(kernel='rbf'), parameters, scoring='f1') # 选择最佳参数
 clf2.fit(trainingSet, trainingLabels)

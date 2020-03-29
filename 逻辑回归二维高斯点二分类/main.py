@@ -76,14 +76,19 @@ def gradAscent(dataMatIn, classLabels, epoch):
     theta = ones((n, 1)) # 3 x 1矩阵,每一行是一个1
     # print(dataMatrix)
 
-    for k in range(epoch):  # 迭代
+    # 迭代
+    for k in range(epoch):
         # dataMatrix矩阵每一行的三个数是1,x,y；theta矩阵一列三个数依次是常数项、x、y的系数
         # 两个矩阵相乘后变成500*1矩阵，每一行的值就是wei[0] + wei[1] * dataSet[i][0] + wei[2] * dataSet[i][1]
         # 即拟合直线，大于0小于0来判断属于A还是属于B，作为横坐标值代入sigmoid函数正好合适
+
+        # 计算预测值域实际值的偏差，500 x 1
         h = sigmoid(dataMatrix * theta)  # 括号内大于0，h更接近于1，B；括号内小于0，h更接近于0，A。h共500行，每一行代表一个点
-        error = (labelMat - h)  # 计算预测值域实际值的偏差，500 x 1
+        error = (labelMat - h)
+
         # transpose转置，dataMatrix.transpose()是3 x 500
-        theta = theta + alpha * dataMatrix.transpose() * error # matrix mult，梯度下降算法，找出最佳的参数，theta是3*1矩阵
+        # matrix mult，梯度下降算法，找出最佳的参数，theta是3*1矩阵
+        theta = theta + alpha * dataMatrix.transpose() * error
 
     # theta就是参数列向量(要求解的),表示回归系数[w0,w1,w2]
     return theta

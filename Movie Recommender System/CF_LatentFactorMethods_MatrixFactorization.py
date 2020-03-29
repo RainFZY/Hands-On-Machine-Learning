@@ -28,7 +28,8 @@ critics = {'Lisa Rose': {'Lady in the Water': 2.5, 'Snake on a Plane': 3.5,
            'Toby': {'Snake on a Plane': 4.5, 'You, Me and Dupree': 1.0, 'Superman Returns': 4.0}}
 
 
-def SGD(R,P,Q,K,epoch=5000,alpha=0.002,beta=0.02): # 矩阵分解，epoch：梯度下降次数；alpha：步长；beta：β。
+# 梯度下降，epoch：梯度下降次数；alpha：步长；beta：β
+def gradient_descent(R,P,Q,K,epoch=5000,alpha=0.002,beta=0.02):
     Q = Q.T # 矩阵的转置
     loss = []
     # 梯度下降
@@ -38,7 +39,8 @@ def SGD(R,P,Q,K,epoch=5000,alpha=0.002,beta=0.02): # 矩阵分解，epoch：梯�
             for j in range(len(R[i])): # 遍历列
                 eij = R[i][j] - np.dot(P[i,:],Q[:,j]) # 求残差值，.dot表示矩阵相乘
                 for k in range(K):
-                    if R[i][j]>0:        #限制评分大于零
+                    # 针对已存在的评分
+                    if R[i][j]>0:
                         P[i][k] = P[i][k] + alpha*(2*eij*Q[k][j]-beta*P[i][k]) # 加入正则化，更新P
                         Q[k][j] = Q[k][j] + alpha*(2*eij*P[i][k]-beta*Q[k][j]) # 加入正则化，更新Q
                 # 计算损失值
@@ -75,7 +77,7 @@ if __name__ == '__main__':   #主函数
     K=2    #K值可根据需求改变
     P=np.random.rand(N,K) #随机生成一个 N行 K列的矩阵
     Q=np.random.rand(M,K) #随机生成一个 M行 K列的矩阵
-    nP,nQ,loss = SGD(R,P,Q,K)
+    nP,nQ,loss = gradient_descent(R,P,Q,K)
 
     print("矩阵Q：\n", Q)
     print("矩阵P：\n", P)

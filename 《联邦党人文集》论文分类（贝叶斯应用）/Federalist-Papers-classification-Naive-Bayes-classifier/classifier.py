@@ -55,7 +55,7 @@ print('---------------------')
 print(XD)
 '''
 
-# 估计Madison所有文章中各个特征词出现的概率，存在列表H_fw_prob中
+# 估计Hamilton所有文章中各个特征词出现的概率，存在列表H_fw_prob中
 H_fw_prob = []
 k = XH.sum(axis=0) #求每一列的和，即Hamilton所有文章中某个特征词出现的次数，一行1254列
 print('Hamilton所有文章中各特征词出现的总次数：',k)
@@ -97,7 +97,7 @@ for xd in range(numD): # numD = 11
     # Compute likelihood ratio for Naive Bayes model
     # XD[xd]是一个由0,1组成的列表，1行1254列
     # np.power(a,b)：a的b次方，a是prob_ratio（每个词的概率比），b是XD[xd]中的每个元素（0或1）
-    # 所以该篇文章中没出现的词它的概率就记为1，不影响之后的乘积结果
+    # 所以该篇文章中没出现的词它的概率就记为1（0次方），不影响之后的乘积结果
     power = [np.power(a,b) for a,b in zip(prob_ratio,XD[xd])]
     # print('------------------------------------------------------')
     # 每篇不确定文章中所有出现的特征词概率比（H/M）的乘积
