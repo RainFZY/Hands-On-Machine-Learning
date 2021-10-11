@@ -1,3 +1,7 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Car Miles per Gallon Prediction using Least Squares and Ridge Regression
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -51,7 +55,7 @@ colors = ['red', 'blue', 'green', 'yellow', 'cyan', 'magenta', 'black']
 for i in range(n):
     plt.plot(df, WRR.T[i], color=colors[i], label=features[i])
 plt.legend()  # add legend for plot
-plt.savefig('WRR-df(λ) curves.png')
+# plt.savefig('WRR-df(λ) curves.png')
 plt.show()
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -78,7 +82,7 @@ plt.xlabel('λ')
 plt.ylabel('RMSE', rotation='horizontal', loc='center')
 plt.title('RMSE - λ')
 plt.plot(y_list, color='red')
-plt.savefig('RMSE-λ curves.png')
+# plt.savefig('RMSE-λ curves.png')
 plt.show()
 
 
@@ -90,16 +94,36 @@ X_test = pd.read_csv('hw1-data/X_test.csv', header=None, names=features)
 y_train = pd.read_csv('hw1-data/y_train.csv', header=None)
 y_test = pd.read_csv('hw1-data/y_test.csv', header=None)
 
-def construct_polynomial_matrix(data, p):
+def construct_train_polynomial_matrix(data, p):
     data = data[data.columns[:-1]]  # delete the last all-1 column
     dt = [data]
 
     # get new data with p-polynomial process
     for i in range(2, p + 1):
         data_i = data ** i
-        # standardization, 分母是std还是range?
+        # standardization, 分母是std(standard deviation)还是range?
         for column in data_i.columns:
             data_i[column] = (data_i[column] - data_i[column].mean()) / data_i[column].std()
+        # column name: w --> w^2
+        data_i = data_i.rename(columns=lambda x: x + '^' + str(i))
+        dt.append(data_i)  # [[w1,w2]] --> [[w1,w2],[w1^2,w2^2]]
+    dt = pd.concat(dt, axis=1)  # dt: list --> DataFrame, w1,w2,w1^2,w2^2
+    dt['constant'] = 1  # w1,w2,w1^2,w2^2 --> w1,w2,w1^2,w2^2,constant
+
+    return dt
+
+def construct_test_polynomial_matrix(data, train_data, p):
+    data = data[data.columns[:-1]]  # delete the last all-1 column
+    train_data = train_data[train_data.columns[:-1]]
+    dt = [data]
+
+    # get new data with p-polynomial process
+    for i in range(2, p + 1):
+        data_i = data ** i
+        train_data_i = train_data ** i
+        # standardization, 分母是std(standard deviation)还是range?
+        for column in data_i.columns:
+            data_i[column] = (data_i[column] - train_data_i[column].mean()) / train_data_i[column].std()
         # column name: w --> w^2
         data_i = data_i.rename(columns=lambda x: x + '^' + str(i))
         dt.append(data_i)  # [[w1,w2]] --> [[w1,w2],[w1^2,w2^2]]
@@ -141,18 +165,20 @@ colors = ['purple', 'orange', 'cyan']
 # p-th polynomial process
 for p in range(1, 4):
     # construct polynomial matrix
-    # ----- standardize train, test together -----
-    X_p = pd.concat([X_train, X_test], axis=0)
-    X_p = construct_polynomial_matrix(X_p, p)
-    X_train_p = X_p[:len(X_train)]
-    X_test_p = X_p[-len(X_test):]
-    # ----- standardize train, test separately -----
-    # X_train_p = construct_polynomial_matrix(X_train, p)
-    # X_test_p = construct_polynomial_matrix(X_test, p)
+    # ----- standardize training and testing data together -----
+    # X_p = pd.concat([X_train, X_test], axis=0)
+    # X_p = construct_polynomial_matrix(X_p, p)
+    # X_train_p = X_p[:len(X_train)]
+    # X_test_p = X_p[-len(X_test):]
+    # ----- standardize training and testing data separately -----
+    X_train_p = construct_train_polynomial_matrix(X_train, p)
+    # Use training data's mean and std to standardize testing data
+    X_test_p = construct_test_polynomial_matrix(X_test, X_train, p)
 
     y_list = calculate_RMSE(X_train_p, X_test_p, y_train, y_test, 101)
+    # print(min(y_list))
     plt.plot(y_list, color=colors[p-1], label='p = %d' % p)
 plt.legend()
-plt.savefig('pth-order RMSE-λ curves.png')
+# plt.savefig('pth-order RMSE-λ curves.png')
 plt.show()
 
