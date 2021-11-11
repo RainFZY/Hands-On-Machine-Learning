@@ -4,6 +4,7 @@
 - Using KNN, Logistic Regression, SVM and K-Means methods to classify 500 multi-calss points with Gaussion distribution
 - Simple recommendation system for Netflix's user, using Latent Factors Model and Neighborhood Methods
 - Analyze data using the linear regression techniques (ridge regression and pth-order polynomial regression) to predict the miles per gallon a car will get using six quantities (features) about that car
+- Predict spam using Naive Bayes Classifier and Logistic Regression
 
 
 
